@@ -1,0 +1,5 @@
+netstat -ano | findstr :1099
+
+taskkill /PID 7736 /F
+
+mvn clean javafx:run (rodar mainAPP)

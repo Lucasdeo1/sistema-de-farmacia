@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmacia.client.MainController" spacing="10" alignment="CENTER">
+    
+    <Label text="Sistema de Gerenciamento de Farmácia" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <HBox spacing="10">
+        <Label text="ID:" />
+        <TextField fx:id="clienteIdField" promptText="ID do Cliente" />
+    </HBox>
+    
+    <HBox spacing="10">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" promptText="Nome" />
+    </HBox>
+    
+    <HBox spacing="10">
+        <Label text="CPF:" />
+        <TextField fx:id="cpfField" promptText="CPF" />
+    </HBox>
+    
+    <HBox spacing="10">
+        <Label text="Endereço:" />
+        <TextField fx:id="enderecoField" promptText="Endereço" />
+    </HBox>
+
+    <HBox spacing="15">
+        <Button fx:id="cadastrarClienteButton" text="Cadastrar Cliente" onAction="#cadastrarCliente" />
+        <Button fx:id="atualizarClienteButton" text="Atualizar Cliente" onAction="#atualizarCliente" />
+        <Button fx:id="removerClienteButton" text="Remover Cliente" onAction="#removerCliente" />
+        <Button fx:id="listarClientesButton" text="Listar Clientes" onAction="#listarClientes" />
+    </HBox>
+
+    <Label fx:id="statusLabel" text="Status: Aguardando ação..." style="-fx-font-size: 14px; -fx-text-fill: darkgreen;" wrapText="true" maxWidth="400" />
+    
+</VBox>

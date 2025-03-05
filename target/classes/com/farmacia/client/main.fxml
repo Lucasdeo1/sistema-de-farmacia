@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Pos?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmacia.client.MainController" spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    
+    <!-- Título -->
+    <Label text="Sistema de Gerenciamento de Farmácia" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+    <!-- Seção de Cadastro e Atualização de Clientes -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="ID:" />
+        <TextField fx:id="clienteIdField" promptText="ID do Cliente" />
+    </HBox>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nome:" />
+        <TextField fx:id="nomeField" promptText="Nome" />
+    </HBox>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="CPF:" />
+        <TextField fx:id="cpfField" promptText="CPF" />
+    </HBox>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Endereço:" />
+        <TextField fx:id="enderecoField" promptText="Endereço" />
+    </HBox>
+
+    <!-- Botões de Cliente -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="cadastrarClienteButton" text="Cadastrar Cliente" onAction="#cadastrarCliente" />
+        <Button fx:id="atualizarClienteButton" text="Atualizar Cliente" onAction="#atualizarCliente" />
+        <Button fx:id="removerClienteButton" text="Remover Cliente" onAction="#removerCliente" />
+        <Button fx:id="listarClientesButton" text="Listar Clientes" onAction="#listarClientes" />
+    </HBox>
+
+    <!-- CRUD Medicamento -->
+    <VBox spacing="10">
+        <Label text="Medicamentos" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+        <HBox spacing="10">
+            <Label text="Nome:" />
+            <TextField fx:id="nomeMedicamentoField" promptText="Nome do Medicamento" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Lote:" />
+            <TextField fx:id="loteMedicamentoField" promptText="Lote" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Preço:" />
+            <TextField fx:id="precoMedicamentoField" promptText="Preço" />
+        </HBox>
+        <Button text="Cadastrar Medicamento" onAction="#handleCadastrarMedicamento"/>
+        <Button text="Listar Medicamentos" onAction="#handleListarMedicamentos"/>
+        
+        <!-- TableView para exibir Medicamentos -->
+        <TableView fx:id="tableViewMedicamentos" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colNomeMedicamento" text="Nome" />
+                <TableColumn fx:id="colLoteMedicamento" text="Lote" />
+                <TableColumn fx:id="colPrecoMedicamento" text="Preço" />
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- CRUD Venda -->
+    <VBox spacing="10">
+        <Label text="Vendas" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+        <HBox spacing="10">
+            <Label text="Cliente:" />
+            <TextField fx:id="clienteVendaField" promptText="Nome do Cliente" />
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Valor Total:" />
+            <TextField fx:id="valorVendaField" promptText="Valor da Venda" />
+        </HBox>
+        <Button text="Registrar Venda" onAction="#handleRegistrarVenda"/>
+        
+        <!-- TableView para exibir Vendas -->
+        <TableView fx:id="tableViewVendas" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colClienteVenda" text="Cliente" />
+                <TableColumn fx:id="colValorVenda" text="Valor" />
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Status de Ação -->
+    <Label fx:id="statusLabel" text="Status: Aguardando ação..." style="-fx-font-size: 14px; -fx-text-fill: darkgreen; -fx-alignment: center;" wrapText="true" maxWidth="400" />
+    <Label fx:id="statusVendaLabel" text="Status da Venda: Aguardando ação..." style="-fx-font-size: 14px; -fx-text-fill: darkgreen; -fx-alignment: center;" wrapText="true" maxWidth="400" />
+    
+</VBox>

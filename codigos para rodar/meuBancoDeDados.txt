@@ -1,0 +1,64 @@
+
+CREATE DATABASE IF NOT EXISTS farmacia_db;
+
+USE farmacia_db;
+
+CREATE TABLE IF NOT EXISTS Medicamento (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    lote VARCHAR(50),
+    validade DATE,
+    preco DECIMAL(10, 2),
+    fornecedor VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS Cliente (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) UNIQUE,
+    endereco VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS Venda (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data_venda DATE NOT NULL,
+    valor_total DECIMAL(10, 2),
+    status_venda VARCHAR(50),
+    cliente_id INT,
+    FOREIGN KEY (cliente_id) REFERENCES Cliente(id)
+);
+
+CREATE TABLE IF NOT EXISTS ItemVenda (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10, 2),
+    venda_id INT,
+    medicamento_id INT,
+    FOREIGN KEY (venda_id) REFERENCES Venda(id),
+    FOREIGN KEY (medicamento_id) REFERENCES Medicamento(id)
+);
+
+CREATE TABLE IF NOT EXISTS Delivery (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    endereco_entrega VARCHAR(255),
+    data_entrega DATE,
+    status_entrega VARCHAR(50),
+    venda_id INT,
+    FOREIGN KEY (venda_id) REFERENCES Venda(id)
+);
+
+USE farmacia_db;
+SELECT * FROM Medicamento;
+INSERT INTO Medicamento (nome, lote, preco) VALUES ('Ibuprofeno', 'Lote456', 15.00);
+SELECT * FROM Cliente;
+SELECT DISTINCT nome FROM Cliente;
+SHOW TRIGGERS FROM farmacia_db;
+SELECT id, nome, cpf, endereco FROM Cliente WHERE TRIM(nome) = 'João da Silva' AND TRIM(cpf) = '12345678901';
+DELETE FROM Cliente WHERE nome = 'João da Silva' AND cpf = '12345678901' AND endereco = 'Rua A, 123';
+SELECT * FROM Venda WHERE cliente_id = 1;
+DELETE FROM Venda WHERE cliente_id = 1;
+DELETE FROM Cliente WHERE id = 1;
+
+
+
+
